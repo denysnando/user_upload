@@ -4,7 +4,7 @@ RSpec.describe AuthenticationController, type: :request do
   let!(:user) { create(:user) }
 
   context '#login' do
-    it 'error password invalid and render to root create new session' do
+    it 'error password invalid and return error' do
       post '/auth/login', params: { email: user.email, password: 'as21sd' }
       expect(response).to have_http_status(401)
       request = JSON.parse(response.body, symbolize_names: true)
