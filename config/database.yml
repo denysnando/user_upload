@@ -1,0 +1,8 @@
+development:
+  database: user_upload_development
+  adapter: postgresql
+  encoding: unicode
+  host: localhost
+  username: postgres
+  password: password
+  pool: 5
