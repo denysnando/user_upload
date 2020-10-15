@@ -6,16 +6,20 @@ RSpec.describe User, type: :model do
   describe 'validations' do
     subject { FactoryBot.create(:user) }
 
-    it { is_expected.to validate_presence_of(:login) }
+    it { is_expected.to validate_presence_of(:email) }
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_uniqueness_of(:login) }
+    it { is_expected.to validate_uniqueness_of(:email) }
   end
 
   describe 'authenticate' do
     let(:current_user) { create(:user) }
 
-    it 'when error in login' do
-      expect { current_user.authenticate(password: '123321') }.to raise_error(ArgumentError)
+    it 'shoulda false' do
+      expect(current_user.authenticate(password: '123321')).to be_falsy
+    end
+
+    it 'shoulda true' do
+      expect(current_user.authenticate(password: '123123')).to be_truthy
     end
   end
 

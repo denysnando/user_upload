@@ -1,14 +1,22 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  helper_method :current_user
+  protect_from_forgery
 
-  def current_user
-    if session[:user_id]
-      @current_user ||= User.find(session[:user_id])
-    else
-      @current_user = nil
-      redirect_to new_session_path, notice: 'Sign in!'
+  def not_found
+    render json: { error: 'not_found' }
+  end
+
+  def authorize_request
+    header = request.headers['Authorization']
+    header = header.split(' ').last if header
+    begin
+      @decoded = JsonWebToken.decode(header)
+      @current_user = User.find(@decoded[:user_id])
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { errors: e.message }, status: :unauthorized
+    rescue JWT::DecodeError => e
+      render json: { errors: e.message }, status: :unauthorized
     end
   end
 end

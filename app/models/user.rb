@@ -1,24 +1,21 @@
 # frozen_string_literal: true
 
 class User < ApplicationRecord
+  # Accessors
+  attr_accessor :password_confirmation
+
   # Validates
-  validates :login, presence: true, uniqueness: true
+  validates :email, presence: true, uniqueness: true
   validates :name, presence: true
 
   # Callbacks
   before_create :cryptography_password
 
   def authenticate(password:)
-    return true if password_valid?(password: password)
+    self.password == Digest::MD5.hexdigest(password)
   end
 
   private
-
-  def password_valid?(password:)
-    return true if self.password == Digest::MD5.hexdigest(password)
-
-    raise ArgumentError, 'Password incorrect. User disabled!'
-  end
 
   def cryptography_password
     self.password = Digest::MD5.hexdigest(password)

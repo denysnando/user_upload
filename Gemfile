@@ -15,6 +15,7 @@ gem 'rails', '~> 5.2.4', '>= 5.2.4.4'
 gem 'sass-rails', '~> 5.0'
 gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
+gem 'jwt', '>= 2.2.2'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3.9'
