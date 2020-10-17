@@ -11,6 +11,10 @@ RSpec.describe User, type: :model do
     it { is_expected.to validate_uniqueness_of(:email) }
   end
 
+  describe 'associations' do
+    it { is_expected.to have_many(:user_images) }
+  end
+
   describe 'authenticate' do
     let(:current_user) { create(:user) }
 

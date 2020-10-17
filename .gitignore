@@ -36,3 +36,6 @@ yarn-debug.log*
 yarn-error.log
 .huskyrc
 bin/pre-commit-rules
+
+# SimpleCov coverage files
+public/coverage

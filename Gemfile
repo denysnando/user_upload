@@ -17,11 +17,20 @@ gem 'turbolinks', '~> 5'
 gem 'uglifier', '>= 1.3.0'
 gem 'jwt', '>= 2.2.2'
 
+# serializers
+gem 'active_model_serializers',  '~> 0.10.2'
+
+# Upload S3
+gem 'aws-sdk-s3', '~> 1.0.0.rc2'
+
 group :development, :test do
   gem 'pry-rails', '~> 0.3.9'
   gem 'rubocop', '~> 0.93.1'
   gem 'rubocop-rails', '~> 2.7.1', require: false
   gem 'rubocop-rspec', '~> 1.43.2', require: false
+
+  # Set env vars from .env
+  gem 'dotenv-rails', '~> 2.7.5'
 end
 
 group :development do
