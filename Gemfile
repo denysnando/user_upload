@@ -19,6 +19,7 @@ gem 'jwt', '>= 2.2.2'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3.9'
+  gem 'rubocop', '~> 0.93.1'
   gem 'rubocop-rails', '~> 2.7.1', require: false
   gem 'rubocop-rspec', '~> 1.43.2', require: false
 end
