@@ -19,14 +19,12 @@ class UsersController < ApplicationController
   end
 
   def show
-    render json: @user, status: :ok
+    user = User.find(params[:id])
+
+    render json: user, each_serializer: UserSerializer
   end
 
   private
-
-  def find_user
-    @user = User.find(params[:id])
-  end
 
   def user_params
     params.permit(:name, :email, :password, :password_confirmation)

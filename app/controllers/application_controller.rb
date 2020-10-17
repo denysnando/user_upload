@@ -3,9 +3,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
-  def not_found
-    render json: { error: 'not_found' }
-  end
+  attr_reader :current_user
 
   def authorize_request
     header = request.headers['Authorization']
