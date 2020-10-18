@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UserImage < ApplicationRecord
   # Associations
   belongs_to :user

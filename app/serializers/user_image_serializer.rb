@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UserImageSerializer < ActiveModel::Serializer
   attributes :id, :image_url, :image_name, :user_id, :created_at
 

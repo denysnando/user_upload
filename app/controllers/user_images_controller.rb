@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UserImagesController < ApplicationController
   before_action :authorize_request
 
@@ -29,7 +27,7 @@ class UserImagesController < ApplicationController
 
   private
 
-  def user_image_params
-    params.permit(:image_name, :image_url, :user_id)
-  end
+    def user_image_params
+      params.permit(:image_name, :image_url, :user_id)
+    end
 end

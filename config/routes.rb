@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Rails.application.routes.draw do
   post '/auth/login', to: 'authentication#login'
 
@@ -7,4 +5,9 @@ Rails.application.routes.draw do
   resources :user_images, only: %i[create show] do
     get :s3_presigned_urls, on: :collection
   end
+
+  # Fallback Routes to React
+  get '*path', to: 'application#fallback_index_html', constraints: lambda { |request|
+    !request.xhr? && request.format.html?
+  }
 end

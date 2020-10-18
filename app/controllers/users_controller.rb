@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class UsersController < ApplicationController
   before_action :authorize_request, except: :create
 
@@ -26,7 +24,7 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.permit(:name, :email, :password, :password_confirmation)
-  end
+    def user_params
+      params.permit(:name, :email, :password, :password_confirmation)
+    end
 end

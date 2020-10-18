@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 module Request
   def request_auth(user = nil)
     user ||= create(:user, password: '123123')

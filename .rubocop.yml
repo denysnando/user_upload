@@ -22,6 +22,8 @@ Rails/DynamicFindBy:
   Enabled: false
 Style/FrozenStringLiteralComment:
   Enabled: true
+  AutoCorrect: true
+  EnforcedStyle: never
 Style/StringLiterals:
   EnforcedStyle: single_quotes
 Layout/DotPosition:
@@ -50,8 +52,6 @@ Style/IfUnlessModifier:
   Enabled: false
 Layout/FirstHashElementIndentation:
   Enabled: false
-Style/ClassAndModuleChildren:
-  Enabled: false
 Naming/PredicateName:
   Enabled: false
 RSpec/EmptyExampleGroup:
@@ -77,3 +77,20 @@ RSpec/MultipleMemoizedHelpers:
   Enabled: false
 Metrics/ParameterLists:
   Enabled: false
+Style/ClassAndModuleChildren:
+  AutoCorrect: true
+  EnforcedStyle: nested
+Style/ClassMethods:
+  AutoCorrect: true
+Layout/IndentationConsistency:
+  Enabled: true
+  AutoCorrect: true
+  EnforcedStyle: indented_internal_methods
+Layout/EndAlignment:
+  Enabled: true
+  AutoCorrect: true
+Layout/MultilineMethodCallIndentation:
+  Enabled: true
+  AutoCorrect: true
+  EnforcedStyle: indented
+  IndentationWidth: 0

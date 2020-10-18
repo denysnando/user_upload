@@ -1,9 +1,12 @@
-# frozen_string_literal: true
-
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
   attr_reader :current_user
+
+  # REACT CONFIGURATION
+  def fallback_index_html
+    render file: 'public/index.html'
+  end
 
   def authorize_request
     header = request.headers['Authorization']

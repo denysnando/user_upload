@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 Aws.config.update({
   region: ENV['AWS_REGION'],
   access_key_id: ENV['AWS_ACCESS_KEY_ID'],

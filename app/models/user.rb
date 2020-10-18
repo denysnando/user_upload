@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class User < ApplicationRecord
   # Associations
   has_many :user_images, dependent: :destroy
@@ -18,13 +16,13 @@ class User < ApplicationRecord
 
   private
 
-  def confirm_password
-    return if password == password_confirmation
+    def confirm_password
+      return if password == password_confirmation
 
-    errors.add :password, :invalid
-  end
+      errors.add :password, :invalid
+    end
 
-  def cryptography_password
-    self.password = Digest::MD5.hexdigest(password)
-  end
+    def cryptography_password
+      self.password = Digest::MD5.hexdigest(password)
+    end
 end
