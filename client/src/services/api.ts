@@ -2,7 +2,7 @@ import axios from 'axios';
 
 import { store } from '~/store';
 
-export const baseURL = 'http://localhost:3000/';
+export const baseURL = '/';
 
 const api = axios.create({
   baseURL,
