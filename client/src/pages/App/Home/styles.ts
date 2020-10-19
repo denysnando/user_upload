@@ -112,7 +112,11 @@ export const ImagesContainer = styled.div`
   }
 `;
 
-export const ImageWrapper = styled(motion.div)`
+export const ImageWrapper = styled(motion.div).attrs({
+  initial: { visibility: 'visible' },
+  animate: { visibility: 'visible' },
+  exit: { visibility: 'visible' },
+})`
   height: 200px;
 
   border-radius: 10px;

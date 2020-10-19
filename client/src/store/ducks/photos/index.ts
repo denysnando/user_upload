@@ -22,7 +22,7 @@ export const handleGetPhotosSuccess = (
 export const handleAddPhoto = (
   state: IState,
   { photo }: ISetPropAction
-): IState => ({ ...state, photos: [photo, ...state.photos] });
+): IState => ({ ...state, photos: [...state.photos, photo] });
 
 export const handleResetPhotos = (state: IState): IState => ({
   ...state,

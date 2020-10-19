@@ -3,7 +3,7 @@ import { AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
-import { ApplicationState } from '~/@types';
+import { ApplicationState, Photo } from '~/@types';
 
 import Form from '~/components/Form';
 import FileInput from '~/components/FileInput';
@@ -75,14 +75,20 @@ const Home: React.FC = () => {
         <Wrapper>
           <ImagesContainer>
             {photos.length > 0 ? (
-              photos.map((photo) => (
-                <ImageWrapper
-                  layoutId={photo.id.toString()}
-                  onClick={() => setSelectedId(photo.id.toString())}
-                >
-                  <Image src={photo.image.thumb.url} />
-                </ImageWrapper>
-              ))
+              photos
+                .map((photo) => (
+                  <ImageWrapper
+                    key={photo.id}
+                    style={{ visibility: 'visible' }}
+                    layoutId={photo.id.toString()}
+                    onClick={() => {
+                      setSelectedId(photo.id.toString());
+                    }}
+                  >
+                    <Image src={photo.image.thumb.url} />
+                  </ImageWrapper>
+                ))
+                .reverse()
             ) : (
               <EmptyImagesContainer>
                 <EmptyMessage>You don't have any images yet.</EmptyMessage>
@@ -93,7 +99,7 @@ const Home: React.FC = () => {
       </Form>
       <AnimatePresence>
         {selectedId && (
-          <HighlightContainer layoutId={selectedId}>
+          <HighlightContainer layoutId={selectedId.toString()}>
             <ResizedImage src={resizedImg?.image.url} />
             <BigImageWrapper>
               <CloseButtonContainer
