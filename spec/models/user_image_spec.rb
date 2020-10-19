@@ -4,8 +4,7 @@ RSpec.describe UserImage, type: :model do
   describe 'validations' do
     subject { FactoryBot.create(:user_image) }
 
-    it { is_expected.to validate_presence_of(:image_name) }
-    it { is_expected.to validate_presence_of(:image_url) }
+    it { is_expected.to validate_presence_of(:image) }
   end
 
   describe 'associations' do

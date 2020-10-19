@@ -23,6 +23,7 @@ gem 'active_model_serializers',  '~> 0.10.2'
 
 # Upload S3
 gem 'aws-sdk-s3', '~> 1.0.0.rc2'
+gem 'carrierwave', '~> 2.0'
 
 group :development, :test do
   gem 'pry-rails', '~> 0.3.9'

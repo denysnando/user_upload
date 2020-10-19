@@ -18,7 +18,7 @@ RSpec.describe ApplicationController, type: :request do
 
       expect(response).to have_http_status(:unauthorized)
       request = JSON.parse(response.body, symbolize_names: true)
-      expect(request[:errors]).to eq("Couldn't find User with 'id'=6")
+      expect(request[:errors]).to eq("Signature has expired")
     end
   end
 end

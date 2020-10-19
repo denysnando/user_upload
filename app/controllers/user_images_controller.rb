@@ -1,14 +1,6 @@
 class UserImagesController < ApplicationController
   before_action :authorize_request
 
-  def s3_presigned_urls
-    presigned_post = S3_BUCKET.presigned_post(
-      key: "uploads/user-id-#{current_user.id}/#{SecureRandom.uuid}-${filename}",
-      success_action_status: '201', acl: 'public-read'
-    )
-    render json: { url: presigned_post.url, fields: presigned_post.fields }
-  end
-
   def show
     user_image = UserImage.find(params[:id])
 
@@ -28,6 +20,6 @@ class UserImagesController < ApplicationController
   private
 
     def user_image_params
-      params.permit(:image_name, :image_url, :user_id)
+      params.permit(:image, :user_id)
     end
 end

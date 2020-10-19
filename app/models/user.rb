@@ -24,5 +24,6 @@ class User < ApplicationRecord
 
     def cryptography_password
       self.password = Digest::MD5.hexdigest(password)
+      self.password_confirmation = Digest::MD5.hexdigest(password_confirmation)
     end
 end
