@@ -7,7 +7,8 @@ class AuthenticationController < ApplicationController
       token = JsonWebToken.encode(user_id: @user.id)
       time = Time.zone.now + 24.hours.to_i
       render json: { token: token, exp: time.strftime('%m-%d-%Y %H:%M'),
-                     name: @user.name }, status: :ok
+                     name: @user.name,
+                     user_id: user.id }, status: :ok
     else
       render json: { error: 'unauthorized' }, status: :unauthorized
     end

@@ -10,7 +10,8 @@ class UsersController < ApplicationController
 
       render json: { token: token,
                      exp: time.strftime('%m-%d-%Y %H:%M'),
-                     name: user.name }, status: :ok
+                     name: user.name,
+                     user_id: user.id }, status: :ok
     else
       render json: { errors: user.errors.full_messages }, status: 422
     end
