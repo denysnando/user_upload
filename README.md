@@ -8,7 +8,7 @@ Hi, This project is a [Rails](http://rubyonrails.org/) application for the [user
 Have the following features with their respective versions installed on the machine:
 
 * Ruby `2.7.1` - You can use [RVM](http://rvm.io)
-* [PostgreSQL 12](http://www.postgresql.org/)
+* PostgreSQL 12
   * OSX - `$ brew install postgresql` or install [Postgress.app](http://postgresapp.com/)
   * Linux - `$ sudo apt-get install postgresql`
   * Windows - [PostgreSQL for Windows](http://www.postgresql.org/download/windows/)
