@@ -13,9 +13,9 @@ export function* signIn({ email, password }: ISetPropAction): SagaIterator {
   try {
     const res = yield call(api.post, '/auth/login', { email, password });
 
-    const { name, token, exp } = res.data;
+    const { name, token, exp, user_id } = res.data;
 
-    yield put(signInSuccess(token, name, exp));
+    yield put(signInSuccess(user_id, token, name, exp, email));
     toastr.success('Successful', 'You are logged in.');
   } catch (err) {
     if (err.response.status === 401) {
@@ -43,9 +43,9 @@ export function* signUp({
       password_confirmation,
     });
 
-    const { token, exp } = res.data;
+    const { token, exp, user_id } = res.data;
 
-    yield put(signUpSuccess(name, email, token, exp));
+    yield put(signUpSuccess(user_id, name, email, token, exp));
     toastr.success('Successful', 'You are logged in.');
   } catch (err) {
     if (err.response.status === 401) {

@@ -20,9 +20,15 @@ export const handleSignInSuccess = (
   { token, exp }: ISetPropAction
 ): IState => ({ ...state, signedIn: true, token, exp });
 
+export const handleSignOut = (state: IState): IState => ({
+  ...state,
+  ...INITIAL_STATE,
+});
+
 /* Reducers to types */
 
 export const reducer = createReducer<IState, IActions>(INITIAL_STATE, {
   [Types.SIGN_IN_SUCCESS]: handleSignInSuccess,
   [Types.SIGN_UP_SUCCESS]: handleSignInSuccess,
+  [Types.SIGN_OUT_REQUEST]: handleSignOut,
 });

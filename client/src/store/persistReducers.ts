@@ -7,7 +7,7 @@ export default (reducers: any) => {
     {
       key: 'userUpload',
       storage: storage,
-      whitelist: ['auth', 'user'],
+      whitelist: ['auth', 'user', 'photos'],
       stateReconciler: autoMergeLevel2,
     },
     reducers

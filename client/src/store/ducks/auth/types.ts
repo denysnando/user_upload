@@ -17,7 +17,6 @@ export interface ITypes extends DefaultActionTypes {
   SIGN_IN_REQUEST: 'signInRequest';
   SIGN_IN_SUCCESS: 'signInSuccess';
   SIGN_OUT_REQUEST: 'signOutRequest';
-  SIGN_OUT_SUCCESS: 'signOutSuccess';
   SIGN_UP_REQUEST: 'signUpRequest';
   SIGN_UP_SUCCESS: 'signUpSuccess';
 }
@@ -26,7 +25,13 @@ export interface ITypes extends DefaultActionTypes {
 
 export interface ICreators extends DefaultActionCreators {
   signInRequest: (email: string, password: string) => ISetPropAction;
-  signInSuccess: (token: string, user: User, exp: string) => ISetPropAction;
+  signInSuccess: (
+    id: number,
+    token: string,
+    name: string,
+    exp: string,
+    email: string
+  ) => ISetPropAction;
   signUpRequest: (
     name: string,
     email: string,
@@ -34,11 +39,13 @@ export interface ICreators extends DefaultActionCreators {
     password_confirmation: string
   ) => ISetPropAction;
   signUpSuccess: (
+    id: number,
     name: string,
     email: string,
     token: string,
     exp: string
   ) => ISetPropAction;
+  signOutRequest: () => ISetPropAction;
 }
 
 export type IActions = ISetPropAction | AnyAction;

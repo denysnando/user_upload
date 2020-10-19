@@ -6,12 +6,10 @@ import { ITypes, ICreators } from './types';
 
 const { Types, Creators } = createActions<ITypes, ICreators>(
   {
-    uploadPhotoRequest: ['attributes'],
-    uploadPhotoSuccess: ['photo'],
-    getPhotosSuccess: ['photos'],
+    actionType: ['dataPassed'],
   },
-  { prefix: '@photos/' }
+  { prefix: '@user/' }
 );
 
-export const PhotosTypes = Types;
+export const UserTypes = Types;
 export default Creators;

@@ -1,24 +1,29 @@
 import { DefaultActionTypes, DefaultActionCreators } from 'reduxsauce';
 import { AnyAction } from 'redux';
 
-import { Photo } from '~/@types';
+import { Photo, PhotoAttributes } from '~/@types';
 
 /* Payloads */
 
 export interface ISetPropAction extends AnyAction {
-  prop: string;
+  photos: Photo[];
+  attributes: PhotoAttributes;
+  photo: Photo;
 }
-
 /* Action Types */
 
 export interface ITypes extends DefaultActionTypes {
-  SET_PROP: 'setProp';
+  GET_PHOTOS_SUCCESS: 'getPhotosSuccess';
+  UPLOAD_PHOTO_REQUEST: 'uploadPhotoRequest';
+  UPLOAD_PHOTO_SUCCESS: 'uploadPhotoSuccess';
 }
 
 /* Action Creators */
 
 export interface ICreators extends DefaultActionCreators {
-  setProp: (prop: string) => ISetPropAction;
+  getPhotosSuccess: (photos: Photo[]) => ISetPropAction;
+  uploadPhotoRequest: (attributes: PhotoAttributes) => ISetPropAction;
+  uploadPhotoSuccess: (photo: Photo) => ISetPropAction;
 }
 
 export type IActions = ISetPropAction | AnyAction;
