@@ -41,6 +41,11 @@ export const UploaderContainer = styled.div`
     &:hover {
       background: ${lighten(0.02, '#6e86d6')};
     }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
   }
 
   > div > a {

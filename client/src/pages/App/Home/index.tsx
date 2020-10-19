@@ -1,11 +1,13 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useState, useRef } from 'react';
 import { AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
+import { useWatch } from 'react-hook-form';
+import _ from 'lodash';
 import * as Yup from 'yup';
 
 import { ApplicationState } from '~/@types';
 
-import Form from '~/components/Form';
+import Form, { FormHandles } from '~/components/Form';
 import FileInput from '~/components/FileInput';
 
 import PhotosActions from '~/store/ducks/photos';
@@ -30,16 +32,30 @@ import {
 const { uploadPhotoRequest } = PhotosActions;
 
 const initialValues = {
-  email: '',
-  password: '',
+  file: undefined,
 };
 
 const schema = Yup.object().shape({
   file: Yup.mixed().required(),
 });
 
+const InputContainer: React.FC = () => {
+  const teste = useWatch({ name: 'file', defaultValue: undefined });
+
+  return (
+    <UploaderContainer>
+      <FileInput name="file" />
+      <button disabled={_.isUndefined(teste) || _.isEmpty(teste)}>
+        Upload!
+      </button>
+    </UploaderContainer>
+  );
+};
+
 const Home: React.FC = () => {
   const dispatch = useDispatch();
+
+  const formRef = useRef<FormHandles>(null);
 
   const { photos } = useSelector((state: ApplicationState) => state.photos);
   const { id } = useSelector((state: ApplicationState) => state.user);
@@ -53,6 +69,7 @@ const Home: React.FC = () => {
 
       const attributes = { image, user_id: id };
       dispatch(uploadPhotoRequest(attributes));
+      formRef.current?.handleResetForm({ ...initialValues });
     },
     [dispatch, id]
   );
@@ -60,6 +77,7 @@ const Home: React.FC = () => {
   return (
     <AnimateSharedLayout type="crossfade">
       <Form
+        ref={formRef}
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={schema}
@@ -67,10 +85,7 @@ const Home: React.FC = () => {
         <Text>
           Upload your <span>photos!</span>
         </Text>
-        <UploaderContainer>
-          <FileInput name="file" />
-          <button>Upload!</button>
-        </UploaderContainer>
+        <InputContainer />
         <Separator />
         <Wrapper>
           <ImagesContainer>

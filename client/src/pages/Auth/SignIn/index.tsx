@@ -1,10 +1,10 @@
-import React, { Fragment, useCallback } from 'react';
+import React, { Fragment, useCallback, useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import * as Yup from 'yup';
 
 import AuthActions from '~/store/ducks/auth';
 
-import Form from '~/components/Form';
+import Form, { FormHandles } from '~/components/Form';
 import Input from '~/components/Input';
 
 import { Buttons } from './styles';
@@ -25,6 +25,8 @@ const schema = Yup.object().shape({
 const SignIn: React.FC = () => {
   const dispatch = useDispatch();
 
+  const formRef = useRef<FormHandles>(null);
+
   const handleSubmit = useCallback(
     ({ email, password }) => {
       dispatch(signInRequest(email, password));
@@ -35,6 +37,7 @@ const SignIn: React.FC = () => {
   return (
     <Fragment>
       <Form
+        ref={formRef}
         initialValues={initialValues}
         onSubmit={handleSubmit}
         validationSchema={schema}

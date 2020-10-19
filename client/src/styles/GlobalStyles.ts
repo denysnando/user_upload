@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components';
-import { darken } from 'polished';
 
 export default createGlobalStyle`
   * {
