@@ -8,7 +8,6 @@ export interface ISetPropAction extends AnyAction {
   email: string;
   password: string;
   token: string;
-  user: User;
   exp: string;
 }
 
@@ -17,10 +16,10 @@ export interface ISetPropAction extends AnyAction {
 export interface ITypes extends DefaultActionTypes {
   SIGN_IN_REQUEST: 'signInRequest';
   SIGN_IN_SUCCESS: 'signInSuccess';
-  SIGN_IN_FAILURE: 'signInFailure';
   SIGN_OUT_REQUEST: 'signOutRequest';
   SIGN_OUT_SUCCESS: 'signOutSuccess';
-  SIGN_OUT_FAILURE: 'signOutFailure';
+  SIGN_UP_REQUEST: 'signUpRequest';
+  SIGN_UP_SUCCESS: 'signUpSuccess';
 }
 
 /* Action Creators */
@@ -28,6 +27,18 @@ export interface ITypes extends DefaultActionTypes {
 export interface ICreators extends DefaultActionCreators {
   signInRequest: (email: string, password: string) => ISetPropAction;
   signInSuccess: (token: string, user: User, exp: string) => ISetPropAction;
+  signUpRequest: (
+    name: string,
+    email: string,
+    password: string,
+    password_confirmation: string
+  ) => ISetPropAction;
+  signUpSuccess: (
+    name: string,
+    email: string,
+    token: string,
+    exp: string
+  ) => ISetPropAction;
 }
 
 export type IActions = ISetPropAction | AnyAction;

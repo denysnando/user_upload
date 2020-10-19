@@ -25,6 +25,7 @@ export default createGlobalStyle`
     --input-border: #707070;
     --white: #fff;
     --link: #6e86d6;
+    --gray: #8a8c90;
 
     /* --primary: #36393f;
     --secondary: #2f3136;

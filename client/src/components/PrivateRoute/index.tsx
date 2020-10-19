@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
 
 import { ApplicationState } from '~/@types';
+import Default from '~/layouts/Default';
 
 interface Props extends RouteProps {
   component: React.ComponentType<any>;
@@ -22,7 +23,9 @@ const RouteWrapper: React.FC<Props> = ({
       {...rest}
       render={(props) =>
         signedIn ? (
-          <Component {...props} />
+          <Default>
+            <Component {...props} />
+          </Default>
         ) : (
           <Redirect
             to={{

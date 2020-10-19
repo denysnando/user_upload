@@ -8,6 +8,7 @@ import Form from '~/components/Form';
 import Input from '~/components/Input';
 
 import { Buttons } from './styles';
+import { Link } from 'react-router-dom';
 
 const { signInRequest } = AuthActions;
 
@@ -21,7 +22,7 @@ const schema = Yup.object().shape({
   password: Yup.string().required(),
 });
 
-const SignUp: React.FC = () => {
+const SignIn: React.FC = () => {
   const dispatch = useDispatch();
 
   const handleSubmit = useCallback(
@@ -39,13 +40,14 @@ const SignUp: React.FC = () => {
         validationSchema={schema}
       >
         <Input name="email" placeholder="E-Mail" />
-        <Input name="password" placeholder="Password" />
+        <Input name="password" placeholder="Password" type="password" />
         <Buttons>
           <button type="submit">Login</button>
+          <Link to="/sign_up">Not member yet? Sign Up here!</Link>
         </Buttons>
       </Form>
     </Fragment>
   );
 };
 
-export default SignUp;
+export default SignIn;

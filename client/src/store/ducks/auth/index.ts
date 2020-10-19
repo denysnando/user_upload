@@ -24,4 +24,5 @@ export const handleSignInSuccess = (
 
 export const reducer = createReducer<IState, IActions>(INITIAL_STATE, {
   [Types.SIGN_IN_SUCCESS]: handleSignInSuccess,
+  [Types.SIGN_UP_SUCCESS]: handleSignInSuccess,
 });

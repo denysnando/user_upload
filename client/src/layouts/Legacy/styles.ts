@@ -46,14 +46,30 @@ export const Box = styled.div`
 
       cursor: pointer;
 
-      margin: 0 auto;
+      margin: 20px auto 0;
       border-radius: 5px;
 
       background: var(--link);
       color: var(--white);
+      transition: all 200ms ease;
+
+      font: bold 14px/16px 'Roboto', sans-serif;
 
       &:hover {
         background: ${lighten(0.02, '#6e86d6')};
+      }
+    }
+
+    > div > a {
+      margin-top: 8px;
+
+      text-decoration: none;
+
+      font: 14px/16px 'OpenSans', sans-serif;
+      color: var(--link);
+
+      &:hover {
+        color: ${lighten(0.02, '#6e86d6')};
       }
     }
   }
