@@ -30,11 +30,14 @@ export const Box = styled.div`
     flex-direction: column;
     flex: 1;
 
+    > div > input,
     > input {
-      margin: 8px 0px;
+      margin: 8px 0px 14px;
       padding: 0 8px;
 
       height: 32px;
+      width: 100%;
+
       border-radius: 5px;
       box-shadow: 0px 0px 25px 3px var(--input-border);
     }

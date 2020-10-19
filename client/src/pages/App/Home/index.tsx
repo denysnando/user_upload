@@ -3,7 +3,7 @@ import { AnimateSharedLayout, AnimatePresence } from 'framer-motion';
 import { useDispatch, useSelector } from 'react-redux';
 import * as Yup from 'yup';
 
-import { ApplicationState, Photo } from '~/@types';
+import { ApplicationState } from '~/@types';
 
 import Form from '~/components/Form';
 import FileInput from '~/components/FileInput';
@@ -35,7 +35,7 @@ const initialValues = {
 };
 
 const schema = Yup.object().shape({
-  dasdas: Yup.string(),
+  file: Yup.mixed().required(),
 });
 
 const Home: React.FC = () => {
@@ -79,7 +79,6 @@ const Home: React.FC = () => {
                 .map((photo) => (
                   <ImageWrapper
                     key={photo.id}
-                    style={{ visibility: 'visible' }}
                     layoutId={photo.id.toString()}
                     onClick={() => {
                       setSelectedId(photo.id.toString());

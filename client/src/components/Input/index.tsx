@@ -1,10 +1,26 @@
 import React, { InputHTMLAttributes } from 'react';
 import { Controller, useFormContext } from 'react-hook-form';
+import { ValidationError } from 'yup';
+
+import { Container, ErrorMessage } from './styles';
 
 interface Props extends InputHTMLAttributes<HTMLInputElement> {
   name: string;
   defaultValue?: any;
 }
+
+interface InputProps {
+  error?: ValidationError;
+}
+
+const InputComponent: React.FC<InputProps> = ({ error, ...props }) => {
+  return (
+    <Container>
+      <input {...props} />
+      {error && <ErrorMessage>{error.message}</ErrorMessage>}
+    </Container>
+  );
+};
 
 const Input: React.FC<Props> = ({ name, defaultValue, ...props }) => {
   const { control, errors } = useFormContext();
@@ -14,7 +30,7 @@ const Input: React.FC<Props> = ({ name, defaultValue, ...props }) => {
       control={control}
       // error={errors[name] && true}
       defaultValue={defaultValue}
-      as={<input {...props} />}
+      as={<InputComponent error={errors[name]} {...props} />}
     />
   );
 };
