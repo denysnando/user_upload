@@ -5,7 +5,9 @@
     "yarn": "1.x"
   },
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "@types/react-redux-toastr": "^7.6.0"
+  },
   "husky": {
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
